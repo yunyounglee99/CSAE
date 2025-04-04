@@ -11,4 +11,4 @@ class SaeWrapper(nn.Module):
     x = self.layer(x)[0]
     mod, latent, current_weight = self.sae(x, prev_weight, task_id)
 
-    return x+0.1 * mod, latent, current_weight
+    return x + mod, latent, current_weight
