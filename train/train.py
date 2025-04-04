@@ -12,6 +12,7 @@ from models.backbone import ViTBackbone
 from models.sae import SparseAutoencoder
 from models.classifier import ClassifierHead
 from models.csae import CSAE
+from models.loss import DeltaLoss
 from dload import dataloaders
 from tqdm import tqdm
 
@@ -23,6 +24,7 @@ def train_csae(
     latent_dim = 256,
     topk = 50,
     l1_coeff = 1e-4,
+    lambda_delta = 1e-3,
     vit_model = "google/vit-base-patch16-224-in21k"
 ):
   if torch.cuda.is_available():
@@ -41,6 +43,8 @@ def train_csae(
   optimizer = optim.Adam(list(model.sae.parameters()) + list(model.classifier.parameters()), lr = lr)
   train_loaders, test_loaders = dataloaders(batch_size=batch_size, num_tasks=num_tasks)
 
+  delta_loss_fn = DeltaLoss(lambda_delta)
+
   prev_weight = None
   
   for task_id, (train_loader, test_loader) in enumerate(zip(train_loaders, test_loaders)):
@@ -56,7 +60,9 @@ def train_csae(
         logits, latent_list, current_weight = model(images, prev_weight = prev_weight)
         ce_loss = F.cross_entropy(logits, labels)
         l1_loss = torch.mean(torch.abs(latent_list[-1]))
-        loss = ce_loss + l1_loss
+        d_loss = delta_loss_fn(prev_weight, current_weight)
+
+        loss = ce_loss + l1_loss + d_loss
         loss.backward()
         optimizer.step()
         total_loss += loss.item()
