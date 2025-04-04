@@ -9,8 +9,9 @@ class SparseAutoencoder(nn.Module):
     self.topk = topk
     self.encoder = nn.Linear(input_dim, latent_dim)
     self.decoder = nn.Linear(latent_dim, input_dim)
-    self.s = nn.Parameter(torch.tensor(0.0))
+    self.alpha = nn.Parameter(torch.rand(1))      
 
+  '''
   def get_alpha(self, task_id):
     if task_id == 0:
       return torch.tensor(1.0, device = self.s.device)
@@ -19,7 +20,8 @@ class SparseAutoencoder(nn.Module):
       upper_bound = 1.0 / (task_id + 1)
       alpha = lower_bound + upper_bound * torch.sigmoid(self.s)
       return alpha
-    
+      '''
+  
   def forward(self, x, prev_weight = None, task_id = 0):
     B, L, D = x.size()
     x_flat = x.view(B*L, D)
@@ -36,12 +38,12 @@ class SparseAutoencoder(nn.Module):
     if prev_weight is not None:
       prev_weight = prev_weight.detach()
       delta = self.decoder.weight - prev_weight
-      alpha = self.get_alpha(task_id)
+      alpha = self.alpha
       W = prev_weight + alpha * delta
     else:
+      self.alpha.requires_grad = False
       W = self.decoder.weight
     
     mod_flat = gated_latent @ W.T
     mod = mod_flat.view(B, L, D)
-
     return mod, latent, W
