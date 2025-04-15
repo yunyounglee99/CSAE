@@ -12,4 +12,4 @@ class ViTBackbone(nn.Module):
 
   def forward(self, images):
     embeddings = self.vit.embeddings(images)
-    return embeddings
+    return embeddings 
