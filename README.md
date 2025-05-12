@@ -7,7 +7,7 @@ A novel continual learning architecture that addresses the scalability and forge
 
 ## 🔍 Overview
 
-**CSAE** (Continual Sparse AutoEncoder) is a lightweight, memory-efficient continual learning method designed to mitigate catastrophic forgetting without growing the model size. It integrates a single sparse autoencoder (SAE) module in parallel with ViT layers and leverages top-k gating for selective parameter activation. Furthermore, CSAE adopts a delta interpolation strategy, which blends the previous task’s parameters with the current task’s updates using a learnable gating tensor \alpha, enabling smooth parameter transitions while preserving past knowledge.
+**CSAE** (Continual Sparse AutoEncoder) is a lightweight, memory-efficient continual learning method designed to mitigate catastrophic forgetting without growing the model size. It integrates a single sparse autoencoder (SAE) module in parallel with ViT layers and leverages top-k gating for selective parameter activation. Furthermore, CSAE adopts a delta interpolation strategy, which blends the previous task’s parameters with the current task’s updates using a learnable gating tensor $'\alpha'$, enabling smooth parameter transitions while preserving past knowledge.
 
 ## 🚨 Motivation
 
