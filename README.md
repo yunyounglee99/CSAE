@@ -40,20 +40,18 @@ CSAE is evaluated under:
 
 - **Class-Incremental Learning**
   - CIFAR-100
-  - ImageNet-R
-- **Domain-Incremental Learning**
-  - CORe50
-  - DomainNet
+  - CUB200 (future work)
 
 ## ⚙️ Implementation Details
 
 - Optimizer: Adam (β₁=0.9, β₂=0.999)
 - Batch Size: 128
-- Learning Rate: 5e-5
-- Total SAE middle dimension: 60
-- Softmax suppression for previous tasks during training
+- Learning Rate: 8e-5
+- Total SAE middle dimension: 30
 
 ## 🏆 Results
+
+![csae1](https://github.com/user-attachments/assets/b287e485-be16-435f-a8ad-84a771e521e5)
 
 - Maintains competitive performance while **greatly reducing model size growth**.
 - Outperforms traditional CAL-based methods in memory-constrained settings.
@@ -68,4 +66,8 @@ CSAE is evaluated under:
 | Forgetting control | ✅ α-gated reuse | ⚠️ Orthogonal constraint |
 | Parallelization | ✅ ViT-parallel | ❌ Mostly sequential |
 
-## 📁 Structure
+## 📉 Limitation of CSAE
+
+• While CSAE achieves strong average performance, the per-task accuracy trends (see “Task Accuracies”) exhibit noticeable fluctuations across tasks, suggesting sensitivity to task order and potential instability in latent representation learning.
+• The “Average Forgetting” curve increases sharply after certain tasks, indicating that long-term knowledge retention is not always guaranteed, particularly under class-imbalanced or distribution-shifted settings.
+• Future improvements may include dynamic task-aware gating, better regularization for stability, and adaptive α-tuning to balance between reuse and plasticity.
