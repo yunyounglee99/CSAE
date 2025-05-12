@@ -26,10 +26,10 @@ To overcome these, CSAE introduces a **single shared SAE module** with **learnab
 - **Residual Update**: Output of SAE is added back to the main network.
 - **Delta interpolation Formula**:
   
-  For task $\( t \)$:
-  \[
+  For task $\ t \$:
+  &\[
   W_t = (1 - \alpha_t) W_{t-1} + \alpha_t W_t^{new}
-  \]
+  \]&
   where \( \alpha_t \) is a learnable gate.
 
 - **No parameter explosion**: One SAE is shared across all tasks, and only a small number of parameters are activated via top-k gating.
