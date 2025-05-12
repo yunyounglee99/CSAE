@@ -70,5 +70,7 @@ CSAE is evaluated under:
 ## 📉 Limitation of CSAE
 
 • While CSAE achieves strong average performance, the per-task accuracy trends (see “Task Accuracies”) exhibit noticeable fluctuations across tasks, suggesting sensitivity to task order and potential instability in latent representation learning.
+
 • The “Average Forgetting” curve increases sharply after certain tasks, indicating that long-term knowledge retention is not always guaranteed, particularly under class-imbalanced or distribution-shifted settings.
+
 • Future improvements may include dynamic task-aware gating, better regularization for stability, and adaptive α-tuning to balance between reuse and plasticity.
