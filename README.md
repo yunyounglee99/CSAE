@@ -51,7 +51,8 @@ CSAE is evaluated under:
 
 ## 🏆 Results
 
-![csae1](https://github.com/user-attachments/assets/b287e485-be16-435f-a8ad-84a771e521e5)
+![continual_learning_metrics](https://github.com/user-attachments/assets/87b8bd10-b114-4edc-99ed-62132c4993d4)
+
 
 - Maintains competitive performance while **greatly reducing model size growth**.
 - Outperforms traditional CAL-based methods in memory-constrained settings.
