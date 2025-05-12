@@ -65,7 +65,7 @@ CSAE is evaluated under:
 | Model growth | ❌ Fixed | ✅ Grows linearly |
 | Interpretability | ✅ Sparse latent units | ❌ Opaque |
 | Forgetting control | ✅ α-gated reuse | ⚠️ Orthogonal constraint |
-| Parallelization | ✅ ViT-parallel | ❌ Mostly sequential |
+
 
 ## 📉 Limitation of CSAE
 
