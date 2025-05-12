@@ -28,9 +28,7 @@ To overcome these, CSAE introduces a **single shared SAE module** with **learnab
   
   For task $\ t \$:
 
-  $$
-  W_t = (1 - \alpha_t) W_{t-1} + \alpha_t W_t^{\text{new}}
-  $$
+  \( W_t = (1 - \alpha_t) W_{t-1} + \alpha_t W_t^{\text{new}} \)
   
   where $\alpha_t\$ is a learnable gate.
 
