@@ -3,7 +3,7 @@
 <img width="990" alt="스크린샷 2025-05-13 오전 1 58 25" src="https://github.com/user-attachments/assets/79b2c201-e8f5-440d-bd93-d65db54450a9" />
 
 
-A novel continual learning architecture that addresses the scalability and forgetting issues in vision transformer-based models using sparse autoencoding and top-k gating.
+A novel continual learning architecture that addresses the scalability and forgetting issues in vision transformer-based models using sparse autoencoding and delta-interpolation
 
 ## 🔍 Overview
 
