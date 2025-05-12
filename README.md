@@ -24,9 +24,9 @@ To overcome these, CSAE introduces a **single shared SAE module** with **learnab
 - **Parallel SAE Module**: Sparse AutoEncoder attached to the 0th–4th layers of the ViT in parallel.
 - **Top-k Gating**: Selects only the top-k latent components, zeroing out the rest.
 - **Residual Update**: Output of SAE is added back to the main network.
-- **Parameter Reuse Formula**:
+- **Delta interpolation Formula**:
   
-  For task \( t \):
+  For task $\( t \)$:
   \[
   W_t = (1 - \alpha_t) W_{t-1} + \alpha_t W_t^{new}
   \]
